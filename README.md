@@ -1,16 +1,11 @@
-mRMA - wewnętrzny system zgłoszeń (RMA) dla serwisów elektroniki (PC, smartfony, laptopy, itp.)
+# Strona napisana w czystym PHP, HTML, CSS, JS, SQL. Do ostylowania posłużył bootstrap. Strona pisana przy pomocy AI
+
+### Strona w trakcie budowy, jest to wczesna alfa
+### Strona udostępniana na licencji MIT. Szczegóły w pliku LICENSE
 
 
 
-Strona napisana w czystym PHP, HTML, CSS, JS, SQL. Do ostylowania posłużył bootstrap. Strona pisana przy pomocy AI
-
-
-
-Strona w trakcie budowy, jest to wczesna alfa
-
-
-
-Dostępna funkcjonalność (co działa):
+### Dostępna funkcjonalność (co działa):
 
 - Dodawanie nowych zgłoszeń
 
@@ -24,7 +19,7 @@ Dostępna funkcjonalność (co działa):
 
 
 
-Co zostanie dodane:
+### Co zostanie dodane:
 
 - Zarządzanie magazynem (części typu ekrany, baterie,)
 
@@ -42,7 +37,7 @@ Co zostanie dodane:
 
 
 
-Uruchomienie lokalnie:
+### Uruchomienie lokalnie:
 
 - zainstalować XAMPP
 
@@ -53,6 +48,7 @@ Uruchomienie lokalnie:
 - Zmienić nazwę pliku .env.example na .env, uzupełnić go o prawdziwe dane
 
 - Dostęp do strony po localhost/mrma. Standardowy wbudowany użytkownik to Admin (hasło admin).
+
 
 
 
