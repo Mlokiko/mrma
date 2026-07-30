@@ -1,0 +1,109 @@
+:root {
+    --sidebar-width: 250px;
+}
+
+/* Podstawowy layout */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex: 1 0 auto;
+    width: 100%;
+    transition: margin-left 0.3s ease;
+}
+
+/* ==========================================================================
+   SYSTEM SZEROKOŚCI WIDOKÓW (Dla stron niebędących pełnymi tabelami)
+   ========================================================================== */
+.view-wrapper-sm, .view-wrapper-md, .view-wrapper-lg {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* SM: Małe formularze (Logowanie, zmiany hasła, małe ustawienia) */
+.view-wrapper-sm { max-width: 600px !important; }
+
+/* MD: Standardowe formularze (Dodaj RMA, Dodaj Klienta, Nowa część) */
+.view-wrapper-md { max-width: 950px !important; }
+
+/* LG: Złożone widoki (Detale RMA, Profil Klienta, Dashboard, Notatki) */
+.view-wrapper-lg { max-width: 1450px !important; }
+
+/* ==========================================================================
+   TRYB PIONOWY (Side Menu) - Aktywny tylko na komputerach i tabletach (>= 992px)
+   Na telefonach Bootstrap i tak zamieni to w zgrabne menu "Hamburger"
+   ========================================================================== */
+@media (min-width: 992px) {
+    :root { --current-sidebar-width: var(--nav-width, 210px); }
+    html[data-nav-orientation="vertical"] body { overflow-x: hidden; }
+    
+    /* 1. Przesunięcie i wyśrodkowanie strony */
+    html[data-nav-orientation="vertical"] .main-content,
+    html[data-nav-orientation="vertical"] footer {
+        margin-left: var(--current-sidebar-width) !important;
+        width: calc(100% - var(--current-sidebar-width)) !important;
+    }
+    
+    /* 2. Zablokowanie paska po lewej stronie */
+    html[data-nav-orientation="vertical"] .navbar {
+        position: fixed; top: 0; bottom: 0; left: 0; z-index: 1030;
+        width: var(--current-sidebar-width); padding: 1.25rem 0.85rem;
+        overflow-y: auto; overflow-x: hidden;
+    }
+
+    /* 3. Wymuszenie układu pionowego na kontenerach i linkach */
+    html[data-nav-orientation="vertical"] .navbar > .container-fluid,
+    html[data-nav-orientation="vertical"] .navbar-collapse,
+    html[data-nav-orientation="vertical"] .navbar-nav {
+        display: flex !important; flex-direction: column !important; 
+        align-items: flex-start; width: 100%;
+    }
+    html[data-nav-orientation="vertical"] .navbar > .container-fluid { height: 100%; padding: 0; flex-wrap: nowrap; }
+    html[data-nav-orientation="vertical"] .navbar-collapse { flex-grow: 1; }
+    html[data-nav-orientation="vertical"] .navbar-brand { width: 100%; text-align: center; border-bottom: 1px solid rgba(128,128,128,0.2); padding-bottom: 0.85rem; margin: 0 0 1.5rem 0; }
+
+    /* 4. Rozłożenie elementów (Wypchnięcie konta na dół) */
+    html[data-nav-orientation="vertical"] .navbar-nav.me-auto { margin-right: 0 !important; margin-bottom: auto !important; }
+    html[data-nav-orientation="vertical"] .navbar-nav:last-child { margin-top: 1rem; border-top: 1px solid rgba(128,128,128,0.2); padding-top: 0.75rem; }
+    html[data-nav-orientation="vertical"] .ms-lg-2 { margin-left: 0 !important; }
+
+    /* 5. Transformacja Dropdown w zgrabny Akordeon */
+    html[data-nav-orientation="vertical"] .nav-item.dropdown { width: 100%; }
+    html[data-nav-orientation="vertical"] .nav-item.dropdown .dropdown-menu {
+        position: static !important; float: none; width: 100%; margin: 0.25rem 0 0.5rem 0; padding: 0.35rem 0;
+        background-color: rgba(128, 128, 128, 0.08); border: none; border-left: 2px solid var(--bs-primary); box-shadow: none !important;
+    }
+}
+
+/* ==========================================================================
+   SYSTEM ZARZĄDZANIA SZEROKOŚCIĄ STRONY
+   ========================================================================== */
+.page-container {
+    margin-right: auto;
+    margin-left: auto;
+    transition: max-width 0.3s ease;
+}
+
+/* 1. Standard (Domyślny Bootstrap - idealny na laptopy) */
+html[data-page-width="standard"] .page-container {
+    max-width: 1320px;
+}
+
+/* 2. Szeroki (Optymalny dla większości monitorów 16:9) */
+html[data-page-width="wide"] .page-container {
+    max-width: 1600px;
+}
+
+/* 3. Ultra Wide (Ograniczenie dla monitorów 21:9, żeby tabele nie były za długie) */
+html[data-page-width="ultrawide"] .page-container {
+    max-width: 1920px;
+}
+
+/* 4. Fluid (100% szerokości ekranu, na własną odpowiedzialność użytkownika) */
+html[data-page-width="fluid"] .page-container {
+    max-width: 100%;
+}

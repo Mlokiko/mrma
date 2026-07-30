@@ -1,0 +1,10 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Jeśli plik lub folder fizycznie istnieje na dysku (np. style CSS, grafiki) - nie ruszaj go
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    
+    # Przekieruj całą resztę do index.php w tym samym katalogu (w pełni automatyczne!)
+    RewriteRule ^(.*)$ index.php [QSA,L]
+</IfModule>

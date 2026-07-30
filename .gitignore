@@ -1,0 +1,7 @@
+notatka1.txt
+notatka2.txt
+schemat_plikow.txt
+.env
+
+# jeśli zaczne korzystać z composer
+vendor/
